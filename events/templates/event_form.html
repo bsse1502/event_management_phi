@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Form</title>
+    <link rel="stylesheet" href="{% static 'css/output.css' %}">
+</head>
+
+    
+<body class="bg-gray-300 min-h-screen flex items-center justify-center px-4 py-8">
+
+
+  <div class="bg-white mx-auto shadow-xl rounded-2xl max-w-2xl p-8 overflow-y-auto max-h-screen">
+    <div class="text-center mb-4 border rounded-xl shadow-md flex items-center justify-center p-4">
+        <p class="text-2xl font-semibold text-cente  ">Create New Event</p>
+    </div>
+    
+    <div class="bg-white rounded-2xl shadow p-6">
+         <form method="POST" class="space-y-6">
+            {% csrf_token %}
+            {{ event_form.as_p }}
+            {{ category_form.as_p }}
+            {{ participant_form.as_p }}
+            
+            <button type="submit" class="w-full bg-rose-600 text-white py-2 px-4 rounded-xl hover:bg-rose-700 transition">
+                Submit
+            </button>
+        </form>
+    </div>
+   
+  </div>
+</body>
+
+    
+</body>
+</html>

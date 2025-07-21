@@ -1,0 +1,44 @@
+
+{% extends "dashboard.html" %}
+
+{% block events %}
+
+<div class="bg-white rounded-xl shadow-md mt-5">
+    <!-- Table Header -->
+    <div class="grid grid-cols-6 m-5 p-4 font-semibold text-gray-700 border-b border-gray-200">
+        <div class="text-gray-400 text-sm ml-5">Event Title</div>
+        <div class="text-gray-400 text-sm">Event Category</div>
+        <div class="text-gray-400 text-sm">Event Date</div>
+        <div class="text-gray-400 text-sm">Event Location</div>
+        <div class="text-gray-400 text-sm">Participants</div>
+        <div class="text-gray-400 text-sm">Action</div>
+        
+    </div>
+
+    <!-- Table Rows -->
+    {% for event in events %}
+    <div class="grid grid-cols-6 p-4 gap-4 items-center hover:bg-gray-50 text-sm border-b">
+        <div>{{ event.name }}</div>
+        <div>{{ event.category.name }}</div>
+        <div>{{ event.date }}</div>
+        <div>{{ event.location }}</div>
+
+        <!-- Participant Names -->
+        <div class="flex flex-wrap gap-1">
+                <span class="bg-blue-100 text-blue-800 px-2 py-0.5 rounded text-xs">{{ event.participant_set.count}}</span>
+        </div>
+        <div>
+            <a href="{% url 'view_events' %}?type={{event.id}}" class="text-blue-600 hover:text-blue-800">View</a>
+            <a href="{% url 'edit_event' event.id %}" class="text-yellow-600 hover:text-yellow-800 ml-2">Edit</a>
+            <form action="{% url 'delete_event' event.id %}" method="POST" class="inline">
+                {% csrf_token %}
+                <button class="text-red-600 hover:text-red-800 ml-2">Delete</button>
+            </form>
+            
+        </div>
+    </div>
+    {% endfor %} 
+</div>
+
+
+{% endblock events %}

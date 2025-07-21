@@ -1,0 +1,147 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Organizer Dashboard</title>
+  <link rel="stylesheet" href="{% static 'css/output.css' %}">
+ 
+</head>
+<body class="bg-gray-100 min-h-screen font-sans">
+
+  <!-- Navigation Bar -->
+  <nav class="bg-white shadow-md">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+      <div class="text-xl font-bold text-gray-800">EventManager</div>
+      <div class="space-x-6">
+        <a href="#" class="text-gray-600 hover:text-blue-500">Dashboard</a>
+        <a href="#" class="text-gray-600 hover:text-blue-500">Events</a>
+        <a href="#" class="text-gray-600 hover:text-blue-500">Participants</a>
+        <a href="#" class="text-gray-600 hover:text-blue-500">Settings</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="grid grid-cols-3 mt-5 gap-3">
+        <a href="{% url 'organizer_dashboard' %}?type=all">
+            <article class="border-2 shadow-md rounded-lg bg-white-900 p-5">
+                <p class="text-gray-500 text-sm">TOTAL EVENTS</p>
+                <div class="flex justify-between items-center ">
+                    <div class="pt-3">
+                        <h3 class="font-semibold text-3xl">{{counts.total_events}}</h3>
+                    </div>
+                    <div class="bg-blue-100 p-3 rounded-full">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" 
+                            viewBox="0 0 24 24" stroke="currentColor" 
+                            class="w-6 h-6 text-blue-600">
+                            <path stroke-linecap="round" stroke-width="1.5" stroke-linejoin="round"
+                                d="M15.666 3.888A2.25 2.25 0 0 0 13.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 0 1-.75.75H9a.75.75 0 0 1-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 0 1 1.927-.184" />
+                        </svg>
+                    </div>
+                </div>
+            </article>
+        </a>
+
+        <a href="">
+            <article class="border-2 shadow-md rounded-lg bg-white-900 p-5">
+                <p class="text-gray-500 text-sm">TOTAL PARTICIPANTS</p>
+                <div class="flex justify-between items-center ">
+                    <div class="pt-3">
+                        <h3 class="font-semibold text-3xl">{{counts.total_participants}}</h3>
+            
+                    </div>
+                    <div class="bg-green-100 p-3 rounded-full">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 text-green-600">
+                            <path stroke-linecap="round" stroke-width="1.5" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                        </svg>
+
+                    </div>
+                </div>
+            </article>
+        </a>
+
+        
+
+        <a href="{% url 'organizer_dashboard' %}?type=past">
+            <article class="border-2 shadow-md rounded-lg bg-white-900 p-5">
+                <p class="text-gray-500 text-sm">PAST EVENTS</p>
+                <div class="flex justify-between items-center ">
+                    <div class="pt-3">
+                        <h3 class="font-semibold text-3xl">{{counts.past_events}}</h3>
+                
+                    </div>
+                    <div class="bg-purple-100 p-3 rounded-full">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" 
+                            viewBox="0 0 24 24" stroke="currentColor" 
+                            class="w-6 h-6 text-purple-600">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                d="M15.666 3.888A2.25 2.25 0 0 0 13.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 0 1-.75.75H9a.75.75 0 0 1-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 0 1 1.927-.184" />
+                        </svg>
+                    </div>
+                </div>
+            </article>
+        </a>
+    </div>
+    
+
+<div class="flex justify-center">
+    <a href="{% url 'organizer_dashboard' %}?type=today">
+     <div class="mt-5 flex justify-center ">
+       <article class="w-[400px] border-2 shadow-md rounded-lg bg-white-900 p-5">
+                <p class="text-gray-500 text-sm">TODAY EVENTS </p>
+                <div class="flex justify-between items-center ">
+                    <div class="pt-3">
+                        <h3 class="font-semibold text-3xl">{{counts.today_events}}</h3>
+                        
+                    </div>
+                    <div class="bg-yellow-100 p-3 rounded-full">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 text-yellow-600">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                        </svg>
+
+                    </div>
+                </div>
+            </article>
+        </div>
+    </a>
+
+
+    <a href="{% url 'organizer_dashboard' %}?type=upcoming">
+        <div class="mt-5 flex justify-center ">
+            <article class="w-[400px] border-2 shadow-md rounded-lg bg-white-900 p-5">
+                <p class="text-gray-500 text-sm">UP COMMING EVENTS</p>
+                <div class="flex justify-between items-center ">
+                    <div class="pt-3">
+                        <h3 class="font-semibold text-3xl">{{counts.upcoming_events}}</h3>
+                        
+                    </div>
+                    <div class="bg-yellow-100 p-3 rounded-full">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 text-yellow-600">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                        </svg>
+
+                    </div>
+                </div>
+            </article>
+            </div>
+        </a>
+</div>
+   {% if messages %}
+  <div>
+    {% for message in messages %}
+      <div class="text-sm text-white bg-blue-500 p-2 rounded my-2">
+        {{ message }}
+      </div>
+    {% endfor %}
+  </div>
+{% endif %}
+ 
+
+    {% block events %}
+      
+    {% endblock events %}
+
+
+</body>
+</html>
